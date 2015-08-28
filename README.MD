@@ -10,7 +10,8 @@ A "race condition" happens when multiple threads, in an uncontrolled manner, cha
 Primitive types can also be handled using Volatile when declaring the variable, ex. private volatile boolean isFinished. A volatile variable is written directly to memory thus bypassing the cache, which means that all threads see the same value for the variable at all times. 
 Finally the Java.util.concurrent library expand on these basic principles further and provides more granular control and is possibly faster than synchronized (source: http://www.ibm.com/developerworks/library/j-jtp10264/).
 
-Explain how Threads can help us in making responsive User Interfaces
+>Explain how Threads can help us in making responsive User Interfaces
+
 In this instance, seperating processes in threads, frees up the main thread so UI is responsive to user input.
 
 #Practical part
