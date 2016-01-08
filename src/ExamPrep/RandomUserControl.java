@@ -1,16 +1,23 @@
 package ExamPrep;
 
 import java.util.Observable;
-import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import randomperson.RandomUser;
 import randomperson.RandomUserGenerator;
 
+/**
+ * This class extends Observable and implements Runnable!
+ *
+ * 1. Get random user from RandomUserGenerator
+ *
+ * 2. Notify observers and pass user-object to them
+ *
+ * @author Tobias Jacobsen
+ */
 public class RandomUserControl extends Observable implements Runnable {
 
     private RandomUser user;
-    private Object lockObject = new Object();
 
     @Override
     public void run() {
@@ -20,9 +27,7 @@ public class RandomUserControl extends Observable implements Runnable {
         } catch (InterruptedException ex) {
             Logger.getLogger(RandomUserControl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        setChanged();
-
-        notifyObservers(user);
+        setChanged(); // marks this observable as having been changed 
+        notifyObservers(user); // notify observers and pass user on to the swing frontend  
     }
 }

@@ -3,25 +3,25 @@ package ExamPrep;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import randomperson.RandomUser;
 
 /**
+ * - When btn1 is clicked we start a thread with the RandomUserControl runnable
  *
- * @author Lars Mortensen
+ * - When RandomUserControl executes "notifyObservers(user)", the update-method
+ * is called
+ *
+ * @author Tobias Jacobsen
  */
 public class RunThis extends javax.swing.JFrame implements Observer {
 
     RandomUserControl randomUserControl = new RandomUserControl();
 
-    /**
-     * Creates new form RandomUserForm
-     */
     public RunThis() {
         initComponents();
-        randomUserControl.addObserver(this);
+        randomUserControl.addObserver(this); // make this gui-window and observer of randomUserControl
     }
 
     /**
@@ -173,6 +173,8 @@ public class RunThis extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextField textStreet;
     // End of variables declaration//GEN-END:variables
 
+    // get the passed object and cast to a RandomUser object
+    // get properties of object and display in interface
     @Override
     public void update(Observable o, Object arg) {
         RandomUser random = (RandomUser) arg;
